@@ -40,8 +40,11 @@ SHA-256：
 # 启动一个模拟器，名字用 xcrun simctl list devices available 里有的
 xcrun simctl boot "iPhone 17 Pro"
 
-# 打开模拟器窗口（Xcode 27 使用 Device Hub）
-open /Applications/Xcode.app/Contents/Applications/DeviceHub.app
+# 打开模拟器窗口
+# Xcode 16 及更早：
+open -a Simulator
+# Xcode 27+：
+# open /Applications/Xcode.app/Contents/Applications/DeviceHub.app
 
 # 安装
 xcrun simctl install booted /你的路径/FatFishCall.app

@@ -49,7 +49,9 @@ SHA-256：
 # 2. 启动模拟器
 xcrun simctl boot "iPhone 17 Pro"
 
-# 3. 打开 Xcode 27 的 Device Hub
+# 3. 打开模拟器窗口
+# Xcode 16 及更早：open -a Simulator
+# Xcode 27+：
 open /Applications/Xcode.app/Contents/Applications/DeviceHub.app
 
 # 4. 安装并启动（把路径换成你的）
