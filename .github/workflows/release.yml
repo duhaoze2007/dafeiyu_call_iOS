@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          TAG="${GITHUB_REF_NAME}"
+          gh release create "$TAG" \
+            Dist/FatFishCall-1.0-simulator-arm64.zip \
+            Dist/FatFishCall-1.0-unsigned.ipa \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "大肥鱼热线 $TAG" \
+            --notes-file RELEASE_NOTES.md \
+            --latest
